@@ -1,18 +1,18 @@
-"use client";
-import { useEffect, useState } from "react";
-import ProjectForm from "./components/ProjectForm";
-import ProjectList from "./components/ProjectList";
-import FormTask from "./components/FormTask";
-import TaskList from "./components/TaskList";
-import SelectFilter from "./components/SelectFilter";
-import { createProject, getProjects } from "./services/projectService";
-import { getTasksByProject, getTasksByStatus } from "./services/taskService";
+'use client';
+import { useEffect, useState } from 'react';
+import ProjectForm from './components/ProjectForm';
+import ProjectList from './components/ProjectList';
+import FormTask from './components/FormTask';
+import TaskList from './components/TaskList';
+import SelectFilter from './components/SelectFilter';
+import { createProject, getProjects } from './services/projectService';
+import { getTasksByProject, getTasksByStatus } from './services/taskService';
 
 export default function Home() {
   const [projects, setProjects] = useState([]);
   const [selectedProject, setSelectedProject] = useState(null);
   const [tasks, setTasks] = useState([]);
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState('');
 
   // Fetch projects on mount
   useEffect(() => {
@@ -24,28 +24,36 @@ export default function Home() {
       const data = await getProjects();
       setProjects(data);
     } catch (err) {
-      console.error("Error fetching projects:", err);
+      console.error('Error fetching projects:', err);
     }
   };
 
   // Fetch tasks when a project is selected
+  // useEffect(() => {
+  //   if (!selectedProject) {
+  //     setTasks([]);
+  //     return;
+  //   }
+
+  //   fetchTasks(selectedProject._id, filter);
+  // }, [selectedProject]);
+
   useEffect(() => {
     if (!selectedProject) {
       setTasks([]);
       return;
     }
-
     fetchTasks(selectedProject._id, filter);
-  }, [selectedProject]);
+  }, [selectedProject, filter]);
 
   // Fetch tasks whenever filter changes
   useEffect(() => {
     if (selectedProject) {
       fetchTasks(selectedProject._id, filter);
     }
-  }, [filter]);
+  }, [filter, selectedProject]);
 
-  const fetchTasks = async (projectId, statusFilter = "") => {
+  const fetchTasks = async (projectId, statusFilter = '') => {
     try {
       let data = [];
       if (statusFilter) {
@@ -56,7 +64,7 @@ export default function Home() {
       }
       setTasks(Array.isArray(data) ? data : []);
     } catch (err) {
-      console.error("Error fetching tasks:", err);
+      console.error('Error fetching tasks:', err);
       setTasks([]);
     }
   };
@@ -66,7 +74,7 @@ export default function Home() {
       const newProject = await createProject(project);
       setProjects([...projects, newProject]);
     } catch (err) {
-      console.error("Error creating project:", err);
+      console.error('Error creating project:', err);
     }
   };
 
@@ -104,9 +112,7 @@ export default function Home() {
             <TaskList tasks={tasks} />
           </>
         ) : (
-          <p className="text-gray-500 text-center mt-10">
-            Select a project to see tasks.
-          </p>
+          <p className="text-gray-500 text-center mt-10">Select a project to see tasks.</p>
         )}
       </div>
     </div>
