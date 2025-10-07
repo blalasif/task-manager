@@ -82,7 +82,6 @@ export default function Home() {
   //   setTasks([...tasks, task]);
   // };
 
-  let abs = 'ff;
   return (
     <div className="p-6 flex flex-col md:flex-row gap-6 min-h-screen bg-gray-100">
       {/* Projects Section */}
