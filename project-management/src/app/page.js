@@ -78,9 +78,9 @@ export default function Home() {
     }
   };
 
-  const handleTaskCreate = (task) => {
-    setTasks([...tasks, task]);
-  };
+  // const handleTaskCreate = (task) => {
+  //   setTasks([...tasks, task]);
+  // };
 
   return (
     <div className="p-6 flex flex-col md:flex-row gap-6 min-h-screen bg-gray-100">
