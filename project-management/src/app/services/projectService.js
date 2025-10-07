@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:4000"; // replace with your backend URL
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL; // replace with your backend URL
 
 // Create a new project
 export const createProject = async (projectData) => {
