@@ -23,10 +23,10 @@ app.use('/', taskRoutes); // all task routes
 // // Task routes (nested under project)
 // router.post("/projects/:id/tasks", taskController.addTaskToProject);
 // router.get("/projects/:id/tasks", taskController.getTasksByProject);
-app.get('/', (req, res) => {
+app.get('/', (res) => {
   res.send('Project Management Tool');
 });
 
-app.listen(PORT, (req, res) => {
+app.listen(PORT, () => {
   console.log(`App is listning on PORT ${PORT}`);
 });
