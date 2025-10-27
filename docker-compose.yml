@@ -12,7 +12,7 @@ services:
     build:
       context: ./project-management
       args:
-        NEXT_PUBLIC_API_BASE_URL: "https://13.51.163.189"
+        NEXT_PUBLIC_API_BASE_URL: "http://13.51.163.189"
     container_name: p-management-frontend
     restart: always
     env_file:
