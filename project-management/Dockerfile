@@ -15,7 +15,8 @@ COPY . .
 # Accept build-time variable
 ARG NEXT_PUBLIC_API_BASE_URL
 ENV NEXT_PUBLIC_API_BASE_URL=$NEXT_PUBLIC_API_BASE_URL
-
+# 🧹 Clean previous build cache (important!)
+RUN rm -rf .next node_modules/.cache
 # Build the Next.js app
 RUN npm run build
 
