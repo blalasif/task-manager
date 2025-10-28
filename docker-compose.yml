@@ -13,8 +13,7 @@ services:
       context: ./project-management
       args:
         NEXT_PUBLIC_API_BASE_URL: "http://13.51.163.189"
-        NEXT_PUBLIC_BUILD_TIME: "" # will be filled by workflow
-
+        NEXT_PUBLIC_BUILD_TIME: "local" # default fallback
     container_name: p-management-frontend
     restart: always
     env_file:
