@@ -86,7 +86,7 @@ export default function Home() {
     <div className="p-6 flex flex-col md:flex-row gap-6 min-h-screen bg-gray-100">
       {/* Projects Section */}
       <div className="md:w-1/3 bg-gray-50 p-6 rounded-xl shadow-md flex flex-col gap-6">
-        <h2 className="text-2xl font-semibold text-gray-800">Projects</h2>
+        <h2 className="text-2xl font-semibold text-gray-800">Projects Created By Bilal for demo</h2>
         <ProjectForm onSubmit={handleProjectCreate} />
         <ProjectList
           projects={projects}
