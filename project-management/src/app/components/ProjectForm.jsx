@@ -1,17 +1,17 @@
-"use client";
-import { useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+'use client';
+import { useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function ProjectForm({ onSubmit }) {
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit({ name, description });
-    toast.success("Project Created Successfully");
-    setName("");
-    setDescription("");
+    toast.success('Project Created Successfully');
+    setName('');
+    setDescription('');
   };
 
   return (
@@ -20,9 +20,7 @@ export default function ProjectForm({ onSubmit }) {
       className="bg-gray-50 shadow-sm rounded-xl p-6 w-full max-w-md mx-auto flex flex-col gap-5"
     >
       <Toaster position="top-right" />
-      <h2 className="text-xl font-semibold text-gray-800">
-        Create New Project
-      </h2>
+      <h2 className="text-xl font-semibold text-gray-800">Create New Project</h2>
 
       <div className="flex flex-col">
         <label className="text-gray-600 mb-1 font-medium">Project Name</label>
@@ -51,7 +49,7 @@ export default function ProjectForm({ onSubmit }) {
         type="submit"
         className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-3 rounded-lg transition"
       >
-        Create Project
+        HI Create Project
       </button>
     </form>
   );
