@@ -13,6 +13,8 @@ services:
       context: ./project-management
       args:
         NEXT_PUBLIC_API_BASE_URL: "http://13.51.163.189"
+        NEXT_PUBLIC_BUILD_TIME: "${{ github.run_number }}" # 🔥 auto cache-bust variable
+
     container_name: p-management-frontend
     restart: always
     env_file:
