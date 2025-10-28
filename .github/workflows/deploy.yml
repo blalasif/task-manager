@@ -3,7 +3,7 @@ name: Deploy to EC2
 on:
   push:
     branches:
-      - master # ya 'dev', jis branch se deploy karni hai
+      - master
 
 jobs:
   deploy:
@@ -20,25 +20,8 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           script: |
-            # Ensure app directory exists
-            mkdir -p /home/ubuntu/app
-
-            # Go to app directory
-            cd /home/ubuntu/app
-
-            # Clone repo if not already present
-            if [ ! -d ".git" ]; then
-              echo "⚙️ Cloning repository for the first time..."
-              git clone https://github.com/<YOUR_GITHUB_USERNAME>/<YOUR_REPO_NAME>.git .
-            fi
-
-            echo "📦 Pulling latest code..."
-            git fetch origin master
-            git reset --hard origin/master
-
-            echo "🐳 Rebuilding Docker containers..."
-            docker compose down || true
+            cd /home/ubuntu/task-manager
+            git pull origin master
+            docker compose down
             docker compose build --no-cache
             docker compose up -d
-
-            echo "✅ Deployment completed successfully!"
